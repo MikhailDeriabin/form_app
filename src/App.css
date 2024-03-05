@@ -10,6 +10,10 @@ h1{
     font-size: 28px;
 }
 
+.form-section{
+    max-width: 340px;
+}
+
 #form, #formBody, #formBottom{
     display: flex;
     flex-direction: column;
@@ -33,7 +37,6 @@ h1{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 340px;
 }
 
 .input-field{
@@ -51,33 +54,28 @@ h1{
 }
 
 .select-field{
-    width: 340px;
+    width: 100%;
     appearance: none;
     background-color: #FDFDFD;
+    background-image: url('./icons/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: 97% 50%;
+}
+.select-field:hover{
+    background-image: url('./icons/arrow-down-white.svg');
 }
 .select-field:focus{
     background-color: #FDFDFD;
+    background-image: url('./icons/arrow-down.svg');
     color: #707070;
 }
 .select-field > option{
     background-color: #FDFDFD;
 }
-.select-field > option:hover{
-    background-color: #18B77A;
-}
-
-.select-arrow{
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    background-color: #FDFDFD00;
-    width: 20px;
-}
 
 .switcher{
     display: flex;
 
-    max-width: 340px;
     height: 52px;
 
     border: 1px solid #707070;
@@ -103,14 +101,11 @@ h1{
     border-bottom-right-radius: 5px;
 }
 
-
 .checkbox-wrapper{
     display: block;
     position: relative;
 
     padding-left: 40px;
-
-    max-width: 300px;
 
     font-size: 13px;
     user-select: none;

@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import arrowDown from './icons/arrow-down.svg';
 
 export default function App() {
     return (
@@ -34,7 +33,6 @@ export default function App() {
                                   <option value="Biisi 1">Biisi 3</option>
                                   <option value="Biisi 1">Biisi 4</option>
                               </select>
-                              <img className="select-arrow" src={arrowDown} alt=""/>
                           </div>
                       </div>
 
