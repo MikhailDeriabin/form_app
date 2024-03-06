@@ -1,6 +1,20 @@
 import styled, { css } from 'styled-components';
 import {Theme} from "./themes";
 
+export const containerStyles = css<{ theme: Theme }>`
+    ${
+        ({ theme }) => `    
+                margin: 0 auto;
+                padding: ${theme.spacing.large};
+                
+                background-color: ${theme.colors.background};
+                color: ${theme.colors.text};
+                font-size: ${theme.fonts.sizes.medium};
+                font-family: ${theme.fonts.family};
+        `}
+`;
+export const DefaultContainer = styled.div<{ theme: Theme }>`${ containerStyles }`;
+
 export const buttonStyles = css<{ theme: Theme }>`
     ${
         ({ theme }) => `
@@ -11,6 +25,8 @@ export const buttonStyles = css<{ theme: Theme }>`
             font-size: ${theme.fonts.sizes.medium};
             font-family: ${theme.fonts.family};
             padding: ${theme.paddings.button.t} ${theme.paddings.button.r} ${theme.paddings.button.b} ${theme.paddings.button.l};
+            border: ${theme.borders.width} solid ${theme.colors.border};
+            border-radius: ${theme.borders.radius};
             
             &:hover {
               background-color: ${theme.colors.input.hover.background};
@@ -30,6 +46,8 @@ export const inputStyles = css<{ theme: Theme }>`
             font-size: ${theme.fonts.sizes.medium};
             font-family: ${theme.fonts.family};
             padding: ${theme.paddings.input.t} ${theme.paddings.input.r} ${theme.paddings.input.b} ${theme.paddings.input.l};
+            border: ${theme.borders.width} solid ${theme.colors.border};
+            border-radius: ${theme.borders.radius};
             
             &:hover {
               background-color: ${theme.colors.input.hover.background};
@@ -52,6 +70,8 @@ export const selectStyles = css<{ theme: Theme }>`
             font-size: ${theme.fonts.sizes.medium};
             font-family: ${theme.fonts.family};
             padding: ${theme.paddings.input.t} ${theme.paddings.input.r} ${theme.paddings.input.b} ${theme.paddings.input.l};
+            border: ${theme.borders.width} solid ${theme.colors.border};
+            border-radius: ${theme.borders.radius};
             
             &:hover {
               background-color: ${theme.colors.select.hover.background};

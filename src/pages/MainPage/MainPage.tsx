@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {MyComponent} from "../../components/MyComponent/MyComponent";
+import {TeamToggleButton} from "../../components/ThemeToggleButton/TeamToggleButton";
 import {TextInput} from "../../components/TextInput/TextInput";
 import {LabeledSelect} from "../../components/LabeledSelect/LabeledSelect";
 import {Switcher} from "../../components/Switcher/Switcher";
@@ -111,10 +111,10 @@ export default function MainPage() {
 
     return (
         <div className="MainPage">
+            <TeamToggleButton/>
             <header>
                 <h1>Ilmoitautumislomake</h1>
             </header>
-            <MyComponent/>
 
             <section className="form-section">
                 <form id="form">

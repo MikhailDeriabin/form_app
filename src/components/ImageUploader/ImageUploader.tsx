@@ -5,13 +5,14 @@ import {Theme} from "../../providers/ThemeProvider/themes";
 
 const DefaultContainer = styled.div<{ theme: Theme }>`${ inputStyles }`;
 const UploadContainer = styled(DefaultContainer)<{ theme: Theme }>`
-    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
     border: ${({ theme }) => theme.borders.width} dashed ${({ theme }) => theme.colors.border};
     border-radius: ${({ theme }) => theme.borders.radius};
     cursor: pointer;
+    padding: 0;
+    height: 50px;
     
     &:hover > label{
         color: ${({ theme }) => theme.colors.input.hover.text};
@@ -23,8 +24,9 @@ const HiddenInput = styled.input`
 `;
 
 const Label = styled.label`
-    z-index: 1;
     display: flex;
+    width: 100%;
+    height: 100%;
     justify-content: center;
     align-items: center;
     cursor: pointer;

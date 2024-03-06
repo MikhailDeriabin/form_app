@@ -149,7 +149,7 @@ export const lightTheme: Theme = {
 export const darkTheme: Theme = {
     ...lightTheme,
     colors: {
-        background: '#707070',
+        background: '#1C1B22',
         text: '#FDFDFD',
         error: '#E21F18',
         button: {
@@ -162,22 +162,22 @@ export const darkTheme: Theme = {
         },
         input: {
             text: '#FDFDFD',
-            background: '#18B77A',
+            background: '#1C1B22',
             hover: {
                 text: '#FDFDFD',
                 background: '#128659'
             }
         },
         select: {
-            text: '#707070',
-            background: '#FDFDFD',
+            text: '#FDFDFD',
+            background: '#1C1B22',
             hover: {
                 text: '#FDFDFD',
-                background: '#18B77A'
+                background: '#128659'
             },
             focus: {
                 text: '#707070',
-                background: '#FDFDFD'
+                background: '#1C1B22'
             }
         },
 

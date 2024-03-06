@@ -24,21 +24,6 @@ h1{
     gap: 30px;
 }
 
-.image-input-field{
-    border-style: dashed;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.image-input-field:hover{
-    background-color: #18B77A;
-    color: #FDFDFD;
-}
-.image-input-field:hover::placeholder{
-    color: #FDFDFD;
-    opacity: 1;
-}
-
 .info{
     font-size: 13px;
 }

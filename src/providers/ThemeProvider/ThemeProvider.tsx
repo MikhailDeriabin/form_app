@@ -22,8 +22,10 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+
     const [theme, setTheme] = useState<Theme>(lightTheme);
-    const [themeType, setThemeType] = useState<'light' | 'dark'>('light');
+    const [themeType, setThemeType] = useState<'light' | 'dark'>(prefersDarkMode ? 'dark' : 'light');
 
     const toggleTheme = () => {
         setTheme(theme === lightTheme ? darkTheme : lightTheme);
