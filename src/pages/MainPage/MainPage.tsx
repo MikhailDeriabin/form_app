@@ -183,7 +183,7 @@ export default function MainPage() {
                     <p className="info">* Pakolliset kentät</p>
 
                     <div className="send-button-section">
-                        <Button onClick={sendForm} style={{minWidth: "125px"}}>Lahetä</Button>
+                        <Button id="sendButton" onClick={sendForm}>Lahetä</Button>
                         <div className="status-wrapper">
                             <Spinner isActive={isLoading}/>
                             <p>{status}</p>

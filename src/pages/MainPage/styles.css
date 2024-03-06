@@ -29,7 +29,8 @@ h1{
 }
 
 #sendButton{
-    cursor: url("../../assets/icons/mic.svg"), auto;
+    cursor: url(../../assets/icons/mic.svg), auto;
+    min-width: 125px;
 }
 
 .send-button-section{
