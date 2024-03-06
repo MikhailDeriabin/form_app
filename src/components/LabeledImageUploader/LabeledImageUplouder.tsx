@@ -7,12 +7,12 @@ import {Validation} from "../../types/Validation";
 import {ImageUploader} from "../ImageUploader/ImageUploader";
 
 type LabeledImageUploaderProps = {
-    onFilesSelected: (selectedFiles: FileList | null) => void;
+    onImageUpload: (imageUrl: string, file: File) => void;
     label: string;
-    uploaderLabel: string,
-    validation?: Validation,
+    uploaderLabel: string;
+    validation?: Validation;
     name: string;
-    className?: string,
+    className?: string;
     id?: string;
 }
 
@@ -24,7 +24,7 @@ const Div = styled.div<{ theme: Theme }>`
 
 export const LabeledFileUploader: FC<LabeledImageUploaderProps> = memo(({
     label,
-    onFilesSelected,
+    onImageUpload,
     uploaderLabel,
     validation,
     name,
@@ -32,6 +32,15 @@ export const LabeledFileUploader: FC<LabeledImageUploaderProps> = memo(({
     id
 }) => {
     const [error, setError] = useState<string | null>(null);
+    const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+    const handleFileSelected = (file: File | null) => {
+        if (file) {
+            const url = URL.createObjectURL(file);
+            setImageUrl(url);
+            onImageUpload(url, file); // Call the callback function with the file
+        }
+    }
 
     return (
         <Div className={className} id={id}>
@@ -39,8 +48,9 @@ export const LabeledFileUploader: FC<LabeledImageUploaderProps> = memo(({
                 htmlFor={name}
                 label={label}
             />
-            <ImageUploader onFilesSelected={onFilesSelected} label={uploaderLabel}
+            <ImageUploader onFileSelected={handleFileSelected} label={uploaderLabel}
             />
+            {imageUrl && <img src={imageUrl} alt="Uploaded" style={{ maxWidth: '100%', marginTop: '10px' }} />}
             <ErrorText
                 error={error}
             />

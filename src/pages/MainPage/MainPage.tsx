@@ -11,6 +11,7 @@ import {Form, FormField} from "../../types/Form";
 import {ValidatorList} from "../../types/Validation";
 import {Spinner} from "../../components/Spinner/Spinner";
 import {LabeledFileUploader} from "../../components/LabeledImageUploader/LabeledImageUplouder";
+import {UploadedImage} from "../../types/UploadedImage";
 
 const songOptions: Song[] = [
     { value: "default", label: "Valitse alta" },
@@ -26,16 +27,14 @@ export default function MainPage() {
     const [songValue, setSongValue] = useState<string>('');
     const [typeValue, setTypeValue] = useState<string>(songType[0]);
     const [isAgree, setIsAgree] = useState<boolean>(false);
-    const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+    const [uploadedImage, setUploadedImage] = useState<UploadedImage>();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [status, setStatus] = useState<string>('');
     const [validationTrigger, setValidationTrigger] = useState<boolean>(false);
 
-    const handleFilesSelected = (files: FileList | null) => {
-        if (files) {
-            setSelectedFiles(Array.from(files));
-        }
+    const handleImageUpload = (imageUrl: string, file: File) => {
+        setUploadedImage( { url: imageUrl, file });
     };
 
     function validateName(name: string): string | null {
@@ -133,7 +132,7 @@ export default function MainPage() {
                         />
 
                         <LabeledFileUploader
-                            onFilesSelected={handleFilesSelected}
+                            onImageUpload={handleImageUpload}
                             label="Kasvokuva"
                             uploaderLabel="+ Tuo kasvokuva"
                             name="person-image"

@@ -33,13 +33,14 @@ const Label = styled.label`
 `;
 
 type ImageUploaderProps = {
-    onFilesSelected: (selectedFiles: FileList | null) => void;
+    onFileSelected: (file: File | null) => void;
     label: string;
 }
 
-export const ImageUploader: React.FC<ImageUploaderProps> = ({ onFilesSelected, label }) => {
+export const ImageUploader: React.FC<ImageUploaderProps> = ({ onFileSelected, label }) => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        onFilesSelected(event.target.files);
+        const file = event.target.files ? event.target.files[0] : null;
+        onFileSelected(file);
     };
 
     return (
