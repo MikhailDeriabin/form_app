@@ -1,0 +1,5 @@
+.switcher{
+    display: flex;
+    height: 52px;
+    border: 1px solid #707070;
+}
