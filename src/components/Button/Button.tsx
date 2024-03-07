@@ -7,9 +7,10 @@ interface ButtonProps {
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
     children: React.ReactNode;
     style?: React.CSSProperties
+    disabled?: boolean
 }
 
-export const Button: React.FC<ButtonProps> = memo( ({ className, id, onClick, children, style }) => {
+export const Button: React.FC<ButtonProps> = memo( ({ className, id, onClick, children, style, disabled }) => {
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         onClick(event);
@@ -21,6 +22,7 @@ export const Button: React.FC<ButtonProps> = memo( ({ className, id, onClick, ch
             id={id}
             className={className}
             style={style}
+            disabled={disabled}
         >
             {children}
         </DefaultButton>

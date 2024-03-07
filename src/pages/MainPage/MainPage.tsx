@@ -30,6 +30,7 @@ export default function MainPage() {
     const [uploadedImage, setUploadedImage] = useState<UploadedImage>();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isSendButtonDisabled, setIsSendButtonDisabled] = useState<boolean>(false);
     const [status, setStatus] = useState<string>('');
     const [validationTrigger, setValidationTrigger] = useState<boolean>(false);
 
@@ -97,9 +98,11 @@ export default function MainPage() {
         setValidationTrigger(false);
 
         //send req to api
+        setIsSendButtonDisabled(true);
         setIsLoading(true);
         setStatus('Lahetetään...');
         setTimeout(() => {
+            setIsSendButtonDisabled(false);
             setIsLoading(false);
             setStatus('Lahetetty onnistuneesti!');
         }, 3000);
@@ -182,7 +185,7 @@ export default function MainPage() {
                     <p className="info">* Pakolliset kentät</p>
 
                     <div className="send-button-section">
-                        <Button id="sendButton" onClick={sendForm}>Lahetä</Button>
+                        <Button id="sendButton" onClick={sendForm} disabled={isSendButtonDisabled}>Lahetä</Button>
                         <div className="status-wrapper">
                             <Spinner isActive={isLoading}/>
                             <p>{status}</p>
