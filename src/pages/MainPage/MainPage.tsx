@@ -12,6 +12,8 @@ import {ValidatorList} from "../../types/Validation";
 import {Spinner} from "../../components/Spinner/Spinner";
 import {LabeledFileUploader} from "../../components/LabeledImageUploader/LabeledImageUplouder";
 import {UploadedImage} from "../../types/UploadedImage";
+import ReactConfetti from "react-confetti";
+import {CatAnimation} from "../../components/CatAnimation/CatAnimation";
 
 const songOptions: Song[] = [
     { value: "default", label: "Valitse alta" },
@@ -31,6 +33,7 @@ export default function MainPage() {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [isSendButtonDisabled, setIsSendButtonDisabled] = useState<boolean>(false);
+    const [isConfettiShowed, setIsConfettiShowed] = useState<boolean>(false);
     const [status, setStatus] = useState<string>('');
     const [validationTrigger, setValidationTrigger] = useState<boolean>(false);
 
@@ -102,13 +105,15 @@ export default function MainPage() {
         setIsLoading(true);
         setStatus('Lahetetään...');
         setTimeout(() => {
+            setIsConfettiShowed(true);
             setIsSendButtonDisabled(false);
             setIsLoading(false);
             setStatus('Lahetetty onnistuneesti!');
-        }, 3000);
+        }, 2000);
         setTimeout(() => {
+            setIsConfettiShowed(false);
             setStatus('');
-        }, 6000);
+        }, 4000);
     }
 
     return (
@@ -191,8 +196,18 @@ export default function MainPage() {
                             <p>{status}</p>
                         </div>
                     </div>
+                    <CatAnimation start={isLoading}/>
                 </form>
             </section>
+            {isConfettiShowed &&
+                <ReactConfetti
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                    numberOfPieces={100}
+                    wind={0.01}
+                    gravity={0.4}
+                />
+            }
         </div>
     );
 }
