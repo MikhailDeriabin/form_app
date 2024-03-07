@@ -15,11 +15,14 @@ interface CheckboxProps {
 }
 
 const Label = styled.label<{ theme: Theme }>`
-    display: block;
-    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: ${({ theme }) => theme.spacing.small};
+    align-items: center;
+    justify-content: left;
 
     margin-bottom: ${({ theme }) => theme.spacing.medium};
-    padding-left: 40px;
+    padding-left: 0;
 
     font-size: ${({ theme }) => theme.fonts.sizes.small};
     user-select: none;
@@ -36,13 +39,13 @@ const Input = styled.input<{ theme: Theme }>`
     }
 `;
 const Box = styled.span<{ theme: Theme }>`
-    position: absolute;
-    top: -7px;
-    left: 0;
+    display: block;
     height: 30px;
     width: 30px;
-
+    min-width: 30px;
+    
     border: ${({ theme }) => theme.borders.width} solid ${({ theme }) => theme.colors.border};
+    border-radius: ${({ theme }) => theme.borders.radius};
     background-color: ${({ theme }) => theme.colors.background};
     
     &:hover{
